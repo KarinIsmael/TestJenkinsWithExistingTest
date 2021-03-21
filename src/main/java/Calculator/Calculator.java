@@ -2,17 +2,20 @@ package Calculator;
 
 public class Calculator {
 
-    public int add(String numbers){
+    public int add(String numbers) {
 
         String[] s = numbers.split(",");
 
-        if (numbers.isEmpty()){
-        return 0;
+        int sum = 0;
+
+        if (numbers.isEmpty()) {
+            return 0;
         }
-        if (numbers.length()<2){
-            return Integer.parseInt(numbers);
+        for (String a : s) {
+            sum += Integer.parseInt(a);
         }
-        else return Integer.parseInt(s[0]) + Integer.parseInt(s[1]);
+        return sum;
+
     }
 
 }
