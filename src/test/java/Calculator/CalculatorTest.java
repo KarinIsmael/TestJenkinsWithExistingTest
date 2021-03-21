@@ -24,7 +24,7 @@ static Calculator calc = new Calculator();
 
     @Test
     void add(){
-        assertEquals(12,calc.add("2,4,5,1"));
+        assertEquals(12,calc.add("2/n4,5/n1"));
 
     }
 
