@@ -23,15 +23,20 @@ static Calculator calc = new Calculator();
     }
 
     @Test
-    void add(){
-        assertEquals(12,calc.add("2/n4,5/n1"));
-
-    }
+    void add(){ assertEquals(12,calc.add("2/n4,5/n1")); }
 
     @Test
     void handleDifferentDelimiters(){
     assertEquals(3,calc.add("//;/n1;2"));
     }
 
+    @Test
+    void catchExceptionForNegativeNumbers(){
+    try{
+        calc.add("2,-3");
+    } catch (Exception a){
+            assertEquals(a.getMessage(),"-3 negatives not allowed");
+    }
+    }
 
 }

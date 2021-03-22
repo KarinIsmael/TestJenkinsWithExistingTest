@@ -11,15 +11,18 @@ public class Calculator {
         if (numbers.isEmpty()) {
             return 0;
         }
+
         for (String a : s) {
             sum += Integer.parseInt(a);
+            if(a.startsWith("-")){
+                throw new RuntimeException(a +" negatives not allowed");
+            }
         }
         return sum;
 
     }
 
     private String[] getStrings(String numbers) {
-
         return numb(numbers).split(delimiters(numbers));
 
     }
@@ -36,7 +39,6 @@ public class Calculator {
                 numbers = numbers.substring(5);
             return numbers;
         }
-
 
     }
 
