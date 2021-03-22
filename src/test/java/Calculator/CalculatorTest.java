@@ -28,5 +28,10 @@ static Calculator calc = new Calculator();
 
     }
 
+    @Test
+    void handleDifferentDelimiters(){
+    assertEquals(3,calc.add("//;/n1;2"));
+    }
+
 
 }

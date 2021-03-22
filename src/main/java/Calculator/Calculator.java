@@ -4,7 +4,7 @@ public class Calculator {
 
     public int add(String numbers) {
 
-        String[] s = numbers.split("/n|,");
+        String[] s = getStrings(numbers);
 
         int sum = 0;
 
@@ -18,4 +18,26 @@ public class Calculator {
 
     }
 
-}
+    private String[] getStrings(String numbers) {
+
+        return numb(numbers).split(delimiters(numbers));
+
+    }
+
+        private String delimiters(String numbers){
+            String del = ",|;|/n";
+            if(numbers.startsWith("//"+del))
+                del = numbers.substring(2,4);
+            return del;
+        }
+
+        private String numb (String numbers){
+            if(numbers.startsWith("//"))
+                numbers = numbers.substring(5);
+            return numbers;
+        }
+
+
+    }
+
+
