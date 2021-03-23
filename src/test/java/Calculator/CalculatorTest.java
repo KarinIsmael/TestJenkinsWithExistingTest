@@ -39,4 +39,9 @@ static Calculator calc = new Calculator();
     }
     }
 
+    @Test
+    void ignoreLargerThan1000(){
+        assertEquals(7,calc.add("2,1001;5"));
+    }
+
 }

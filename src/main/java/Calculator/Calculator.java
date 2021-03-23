@@ -6,20 +6,28 @@ public class Calculator {
 
         String[] s = getStrings(numbers);
 
-        int sum = 0;
-
         if (numbers.isEmpty()) {
             return 0;
         }
+        return getASum(s);
+    }
 
+    private int getASum(String[] s) {
+        int sum = 0;
         for (String a : s) {
-            sum += Integer.parseInt(a);
+            if(getAnInt(a)>1000){
+                continue;
+            }
+            sum += getAnInt(a);
             if(a.startsWith("-")){
                 throw new RuntimeException(a +" negatives not allowed");
             }
         }
         return sum;
+    }
 
+    private int getAnInt(String a) {
+        return Integer.parseInt(a);
     }
 
     private String[] getStrings(String numbers) {
