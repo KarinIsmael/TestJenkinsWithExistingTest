@@ -2,7 +2,7 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeManagerTest {
 
@@ -12,8 +12,18 @@ class EmployeeManagerTest {
     BankService bankService = new TestBankService();
         EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
 
-        assertEquals(2, employeeManager.payEmployees());
+        assertEquals(3, employeeManager.payEmployees());
     }
 
+    @Test
+    void noEmployeesThrowsException(){
+
+        EmployeeRepository employeeRepository = new TestEmployeeRepository();
+        BankService bankService = new TestBankService();
+        EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
+
+        assertFalse(employeeManager.payEmployees()==2);
+
+    }
 
 }
