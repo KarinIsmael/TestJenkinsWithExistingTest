@@ -3,6 +3,7 @@ package Calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 static Calculator calc = new Calculator();
@@ -32,16 +33,18 @@ static Calculator calc = new Calculator();
 
     @Test
     void catchExceptionForNegativeNumbers(){
-    try{
-        calc.add("2,-3");
-    } catch (Exception a){
-            assertEquals(a.getMessage(),"-3 negatives not allowed");
-    }
+        var exception = assertThrows(RuntimeException.class,() ->calc.add("-2") );
+           assertEquals("-2 negatives not allowed",exception.getMessage() );
     }
 
     @Test
     void ignoreLargerThan1000(){
         assertEquals(7,calc.add("2,1001;5"));
+    }
+
+    @Test
+    void delimitersOfAnyLength(){
+        assertEquals(6,calc.add("//***/n1***2***3"));
     }
 
 }
