@@ -4,10 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class EmployeeManagerTest {
 
@@ -23,14 +21,13 @@ class EmployeeManagerTest {
     @Test
     void noEmployeesThrowsException(){
 
-        EmployeeRepository employeeRepository = new TestEmployeeRepository();
+        EmployeeRepository employeeRepository = new TestNoEmployeeInRepositoryTest();
         BankService bankService = new TestBankService();
-
-
 
         EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
 
-        assertFalse(employeeManager.payEmployees()==2);
+        assertThrows(RuntimeException.class, employeeManager::payEmployees); //assertThrows(RuntimeException.class,()->employeeManager.payEmployees());
+        //assertFalse(employeeManager.payEmployees()==2);
 
     }
 
@@ -47,20 +44,6 @@ class EmployeeManagerTest {
         assertEquals(3, employeeManager.payEmployees());
     }
 
-    @Test
-    void noEmployeesThrowsExceptionWithMockito(){
 
-        EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
-        BankService bankService = mock(BankService.class);
-
-        when(employeeRepository.findAll()).thenReturn(List.of(new Employee("2",25000),
-                new Employee("3", 37000), new Employee("3",24000)));
-
-
-        EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
-
-        assertFalse(employeeManager.payEmployees()==1);
-
-    }
 
 }
