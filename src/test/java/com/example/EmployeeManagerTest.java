@@ -21,7 +21,7 @@ class EmployeeManagerTest {
     @Test
     void noEmployeesThrowsException(){
 
-        EmployeeRepository employeeRepository = new TestNoEmployeeInRepositoryTest();
+        EmployeeRepository employeeRepository = new TestNoEmployeeInRepository();
         BankService bankService = new TestBankService();
 
         EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);

@@ -36,7 +36,9 @@ class MemoryEmployeeRepositoryTest {
 
         var b = memoryEmployeeRepository.save(new Employee ("2",5000));
 
-        assertEquals(5000, b.getSalary());
+        assertEquals(b, memoryEmployeeRepository.findAll().get(1));
+
+        //assertEquals(5000, b.getSalary());
     }
 
 }

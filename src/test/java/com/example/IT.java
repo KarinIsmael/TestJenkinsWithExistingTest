@@ -9,10 +9,10 @@ class IT {
     @Test
     void repoIntegrationTest() {
 
-        EmployeeRepository employeeRepository = new MemoryEmployeeRepository();
+        MemoryEmployeeRepository employeeRepository = new MemoryEmployeeRepository();
         var actual = employeeRepository.save(new Employee("1", 20000));
 
-        assertEquals("1", actual.getId());
+        assertEquals(23000, actual.getSalary());
 
     }
 }
